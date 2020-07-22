@@ -803,6 +803,9 @@ static void draw_page()
 
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-function"
+
 static void draw_char(char c, int x, int y, int highlight)
 {
   tty_jump(x, y);
@@ -831,6 +834,8 @@ static int draw_rune(char *c, int x, int y, int highlight)
   tty_esc("0m");
   return l;
 }
+
+#pragma GCC diagnostic pop
 
 static void check_cursor_bounds()
 {
@@ -925,6 +930,9 @@ static int utf8_lnw(int* width, char* str, int bytes)
   return length;
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-function"
+
 //try to estimate width of next "glyph" in terminal buffer
 //combining chars 0x300-0x36F shall be zero width
 static int utf8_width(char *str, int bytes)
@@ -940,6 +948,8 @@ static int utf8_width(char *str, int bytes)
   }
   return 0;
 }
+
+#pragma GCC diagnostic pop
 
 static int utf8_dec(char key, char *utf8_scratch, int *sta_p)
 {
